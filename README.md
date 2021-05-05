@@ -1,10 +1,14 @@
 
 
-| Built With            | Version       | Description                                               |
-| --------------------- | ------------- | --------------------------------------------------------- |
-| PHP                   | 7.3 (minimum) |                                                           |
-| MySQL                 | 5.7 (minimum) | Database                                                  |
-| Laravel               | 8           |                                                           |
+| Built With                | Version       | Description |
+| ------------------------- | ------------- | ----------- |
+| PHP                       | 7.3 (minimum) |             |
+| MySQL                     | 5.7 (minimum) | Database    |
+| Laravel                   | 8             |             |
+| laravel-datatables-oracle | 9.0           |             |
+| yajra/laravel-datatables  | 1.5           |             |
+| yajra/laravel-datatables  | 1.5           |             |
+
 
 
 ### Local installation
