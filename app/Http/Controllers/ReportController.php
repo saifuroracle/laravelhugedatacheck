@@ -17,8 +17,9 @@ class ReportController extends Controller
     public function hugedatacheck()
     {
         $report = DB::table('students')->get();
+        $reportcount = $report->count('id');
 
-        return datatables()->of($report)->make(true);
+        return datatables()->of($report)->with('reportcount', $reportcount)->make(true);
     }
 
 

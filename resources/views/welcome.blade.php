@@ -112,6 +112,14 @@
                                 <th scope="col">Age</th>
                             </tr>
                         </thead>
+                        <tfoot>
+                            <tr class="bg-seconday">
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th id="total_age"></th>
+                            </tr>
+                        </tfoot>
                     </table>
         </div>
 
@@ -163,7 +171,10 @@
 
                     ],
 
-                    ajax: "{{url('/')}}"+"/hugedatacheck",
+                    ajax: {
+                        url: "{{url('/')}}"+"/hugedatacheck",
+                    },
+                    // ajax: "{{url('/')}}"+"/hugedatacheck",
 
                     datatype:'json',
                     type: 'get',
@@ -209,6 +220,43 @@
                     //     // $( api.column( 3 ).footer() ).html( pageTotalSoldQty  );
                     //     // $( api.column( 4 ).footer() ).html( 'USD '+pageTotalSellingPrice  );
                     // },
+                    // "footerCallback": function ( row, data, start, end, display ) {
+
+
+
+                    //     var api = this.api(), data;
+
+                    //     // Remove the formatting to get integer data for summation
+                    //     // var intVal = function ( i ) {
+                    //     //     return typeof i === 'string' ?
+                    //     //         i.replace(/[\$,]/g, '')*1 :
+                    //     //         typeof i === 'number' ?
+                    //     //             i : 0;
+                    //     // };
+
+                    //     // Total over all pages
+                    //     // var total = api
+                    //     //     .column( 3 )
+                    //     //     .data()
+                    //     //     .reduce( function (a, b) {
+                    //     //         return intVal(a) + intVal(b);
+                    //     //     }, 0 );
+
+                    //     var table = $('#datatableProductsReportWScroll').DataTable();
+                    //     var tableinfo = table.page.info();
+                    //     // total = tableinfo.recordsTotal
+                    //     // reportcount = tableinfo.recordsTotal
+
+                    //     console.log(tableinfo)
+                    //     // $( api.column( 3 ).footer() ).html( data  );
+                    // },
+
+                    "fnDrawCallback": function() {
+                        var api = this.api()
+                        var json = api.ajax.json();
+                        $(api.column(3).footer()).html(json.reportcount);
+                    },
+
                     columns: [
                                 { data: 'id',
                                     render: function(data, type, full, meta){
@@ -267,6 +315,8 @@
                             ],
                 });
                 });
+
+
         </script>
 
         {{-- <script type="text/javscript" src="{{ asset('js/jquery.dataTables.min.js') }}"></script> --}}
